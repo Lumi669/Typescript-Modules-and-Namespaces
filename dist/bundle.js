@@ -63,7 +63,11 @@ var App;
             }
         }
     }
-    const projectState = ProjectState.getInstance();
+    App.ProjectState = ProjectState;
+    App.projectState = ProjectState.getInstance();
+})(App || (App = {}));
+var App;
+(function (App) {
     function validate(validatableInput) {
         let isValid = true;
         if (validatableInput.required) {
@@ -162,7 +166,7 @@ var App;
         }
         dropHandler(event) {
             const prjId = event.dataTransfer.getData("text/plain");
-            projectState.removeProject(prjId, this.type === "active" ? App.ProjectStatus.Active : App.ProjectStatus.Finished);
+            App.projectState.removeProject(prjId, this.type === "active" ? App.ProjectStatus.Active : App.ProjectStatus.Finished);
         }
         dragLeaveHandler(_3) {
             const listEl = this.element.querySelector("ul");
@@ -172,7 +176,7 @@ var App;
             this.element.addEventListener("dragover", this.dragOverHandler);
             this.element.addEventListener("dragleave", this.dragLeaveHandler);
             this.element.addEventListener("drop", this.dropHandler);
-            projectState.addListener((projects) => {
+            App.projectState.addListener((projects) => {
                 const relevantProjects = projects.filter(prj => {
                     if (this.type === "active") {
                         return prj.status === App.ProjectStatus.Active;
@@ -256,7 +260,7 @@ var App;
             const userInput = this.gatherUserInput();
             if (Array.isArray(userInput)) {
                 const [title, desc, people] = userInput;
-                projectState.addProject(title, desc, people);
+                App.projectState.addProject(title, desc, people);
                 console.log(title, desc, people);
                 this.clearInput();
             }
@@ -268,5 +272,28 @@ var App;
     new ProjectInput();
     new ProjectList("active");
     new ProjectList("finished");
+})(App || (App = {}));
+var App;
+(function (App) {
+    function validate(validatableInput) {
+        let isValid = true;
+        if (validatableInput.required) {
+            isValid = isValid && validatableInput.value.toString().trim().length !== 0;
+        }
+        if (validatableInput.minLength != null && typeof validatableInput.value === "string") {
+            isValid = isValid && validatableInput.value.length >= validatableInput.minLength;
+        }
+        if (validatableInput.maxLength != null && typeof validatableInput.value === "string") {
+            isValid = isValid && validatableInput.value.length <= validatableInput.maxLength;
+        }
+        if (validatableInput.min != null && typeof validatableInput.value === "number") {
+            isValid = isValid && validatableInput.value >= validatableInput.min;
+        }
+        if (validatableInput.max != null && typeof validatableInput.value === "number") {
+            isValid = isValid && validatableInput.value <= validatableInput.max;
+        }
+        return isValid;
+    }
+    App.validate = validate;
 })(App || (App = {}));
 //# sourceMappingURL=bundle.js.map
