@@ -2,23 +2,10 @@
 ///<reference path="project-model.ts"/>
 ///<reference path="project-state.ts"/>
 ///<reference path="validation.ts"/>
+///<reference path="autobind-decorator.ts"/>
 
 namespace App {
     // Project Type
-
-    //autobind decorator
-    function Autobind(_: any, _2: string, descriptor: PropertyDescriptor) {
-        const originalMethod = descriptor.value;
-        const adjustDescriptor: PropertyDescriptor = {
-            configurable: true,
-            enumerable: false,
-            get() {
-                const boundFn = originalMethod.bind(this);
-                return boundFn;
-            }
-        };
-        return adjustDescriptor;
-    }
 
     //create a base class with common functionalities
     abstract class Component<T extends HTMLElement, U extends HTMLElement> {
