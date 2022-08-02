@@ -87,6 +87,10 @@ var App;
         }
         return isValid;
     }
+    App.validate = validate;
+})(App || (App = {}));
+var App;
+(function (App) {
     function Autobind(_, _2, descriptor) {
         const originalMethod = descriptor.value;
         const adjustDescriptor = {
@@ -240,9 +244,9 @@ var App;
                 min: 1,
                 max: 5
             };
-            if (!validate(tiltleValidatable) ||
-                !validate(descriptionValidatable) ||
-                !validate(peopleValidatable)) {
+            if (!App.validate(tiltleValidatable) ||
+                !App.validate(descriptionValidatable) ||
+                !App.validate(peopleValidatable)) {
                 alert("Invalid input!");
                 return;
             }
@@ -272,28 +276,5 @@ var App;
     new ProjectInput();
     new ProjectList("active");
     new ProjectList("finished");
-})(App || (App = {}));
-var App;
-(function (App) {
-    function validate(validatableInput) {
-        let isValid = true;
-        if (validatableInput.required) {
-            isValid = isValid && validatableInput.value.toString().trim().length !== 0;
-        }
-        if (validatableInput.minLength != null && typeof validatableInput.value === "string") {
-            isValid = isValid && validatableInput.value.length >= validatableInput.minLength;
-        }
-        if (validatableInput.maxLength != null && typeof validatableInput.value === "string") {
-            isValid = isValid && validatableInput.value.length <= validatableInput.maxLength;
-        }
-        if (validatableInput.min != null && typeof validatableInput.value === "number") {
-            isValid = isValid && validatableInput.value >= validatableInput.min;
-        }
-        if (validatableInput.max != null && typeof validatableInput.value === "number") {
-            isValid = isValid && validatableInput.value <= validatableInput.max;
-        }
-        return isValid;
-    }
-    App.validate = validate;
 })(App || (App = {}));
 //# sourceMappingURL=bundle.js.map
