@@ -1,7 +1,7 @@
 import { Component } from "./base-component.js";
 // import { Validatable, validate } from "../util/validation.js";
 import * as Validation from "../util/validation.js";
-import { Autobind } from "../decorators/autobind.js";
+import { Autobind as aaa } from "../decorators/autobind.js";
 import { projectState } from "../state/project-state.js";
 
 export class ProjectInput extends Component<HTMLDivElement, HTMLElement> {
@@ -70,7 +70,7 @@ export class ProjectInput extends Component<HTMLDivElement, HTMLElement> {
         this.peopleInputElement.value = "";
     }
 
-    @Autobind
+    @aaa
     private submitHandler(event: Event) {
         event.preventDefault();
         const userInput = this.gatherUserInput();
