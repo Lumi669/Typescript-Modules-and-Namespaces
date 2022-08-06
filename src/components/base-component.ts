@@ -1,5 +1,7 @@
+export const something = "...";
+
 //create a base class with common functionalities
-export abstract class Component<T extends HTMLElement, U extends HTMLElement> {
+export default abstract class Component<T extends HTMLElement, U extends HTMLElement> {
     templateElement: HTMLTemplateElement;
     hostElement: T;
     element: U; // there is no HTMLSectionElement, so use HTMLElement

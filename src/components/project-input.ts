@@ -1,10 +1,10 @@
-import { Component } from "./base-component.js";
+import bbb from "./base-component.js";
 // import { Validatable, validate } from "../util/validation.js";
 import * as Validation from "../util/validation.js";
 import { Autobind as aaa } from "../decorators/autobind.js";
 import { projectState } from "../state/project-state.js";
 
-export class ProjectInput extends Component<HTMLDivElement, HTMLElement> {
+export class ProjectInput extends bbb<HTMLDivElement, HTMLElement> {
     titleInputElement: HTMLInputElement;
     descriptionInputElement: HTMLInputElement;
     peopleInputElement: HTMLInputElement;

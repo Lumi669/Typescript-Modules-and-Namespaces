@@ -1,10 +1,10 @@
 import { Project } from "../models/project.js";
 import { Autobind } from "../decorators/autobind.js";
-import { Component } from "./base-component.js";
+import ccc from "./base-component.js";
 import { Draggable } from "../models/drag-drop.js";
 
 //ProjectItem Class
-export class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> implements Draggable {
+export class ProjectItem extends ccc<HTMLUListElement, HTMLLIElement> implements Draggable {
     private project: Project;
 
     //add a getter

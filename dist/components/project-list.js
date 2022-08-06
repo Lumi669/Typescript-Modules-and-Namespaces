@@ -5,11 +5,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { Autobind } from "../decorators/autobind.js";
-import { Component } from "./base-component.js";
+import ddd from "./base-component.js";
 import { ProjectStatus } from "../models/project.js";
 import { projectState } from "../state/project-state.js";
 import { ProjectItem } from "./project-item.js";
-export class ProjectList extends Component {
+export class ProjectList extends ddd {
     constructor(type) {
         super("project-list", "app", false, `${type}-projects`);
         this.type = type;
